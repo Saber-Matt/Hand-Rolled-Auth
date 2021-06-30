@@ -10,6 +10,7 @@ describe('demo routes', () => {
 
   it('creates a new user via POST', async () => {
 
+    // const agent = request.agent(app);
     const res = await request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -24,6 +25,32 @@ describe('demo routes', () => {
       profilePhotoUrl: 'string'
     });
   });
+
+  it('logs in an existing user via POST', async () => {
+
+    await request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        username: 'test',
+        password: 'password',
+        profilePhotoUrl: 'string'
+      });
+
+    const agent = request.agent(app);
+    const res = await agent
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'test',
+        password: 'password',
+      });
+
+    expect(res.body).toEqual({
+      id: '1',
+      username: 'test',
+      profilePhotoUrl: 'string'
+    });
+  });
+
 
 
 });
