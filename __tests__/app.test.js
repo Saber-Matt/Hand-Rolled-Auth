@@ -11,15 +11,17 @@ describe('demo routes', () => {
   it('creates a new user via POST', async () => {
 
     const res = await request(app)
-      .post('api/v1/users')
+      .post('/api/v1/auth/signup')
       .send({
-        email: 'test@email.com',
+        username: 'test',
         password: 'password',
+        profilePhotoUrl: 'string'
       });
 
     expect(res.body).toEqual({
       id: '1',
-      email: 'test@email.com'
+      username: 'test',
+      profilePhotoUrl: 'string'
     });
   });
 
