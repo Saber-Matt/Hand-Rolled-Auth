@@ -5,7 +5,8 @@ CREATE TABLE users (
   username TEXT NOT NULL UNIQUE,
   password_hash TEXT NOT NULL,
   profile_photo_url TEXT NOT NULL
-) CREATE TABLE posts (
+);
+CREATE TABLE posts (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   user_id BIGINT REFERENCES users(id) NOT NULL,
   photo_url TEXT NOT NULL,

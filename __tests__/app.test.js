@@ -52,48 +52,5 @@ describe('demo routes', () => {
       profilePhotoUrl: 'string'
     });
   });
-
-
-  it('creates a new post', async () => {
-
-    const agent = request.agent(app);
-    const res = await agent
-      .post('/api/v1/posts')
-      .send({
-        id: '',
-        photoUrl: 'https://placekeanu.com/200/150',
-        caption: '',
-        tags: ['tagA,', 'tagB'],
-      });
-
-    expect(res.body).toEqual({
-      id: '1',
-      userId: '1',
-      photoUrl: 'https://placekeanu.com/200/150',
-      caption: '',
-      tags: ['tagA,', 'tagB'],
-    });
-
-    test('gets all posts', async () => {
-      const post1 = await Post.create({
-        user: '1',
-        photoUrl: 'https:placekeanu.com/200/150',
-        caption: 'here he is',
-        tags: ['tagA', 'tagB', 'tagC']
-      });
-
-      const post2 = await Post.create({
-        user: '1',
-        photoUrl: 'https:placekeanu.com/200/150',
-        caption: 'boom boom!',
-        tags: ['tagA', 'tagB', 'tagC']
-      });
-
-      const res = await agent
-        .get('/api/v1/posts');
-
-      expect(res.body).toEqual([post1, post2]);
-    });
-  });
 }
 );
