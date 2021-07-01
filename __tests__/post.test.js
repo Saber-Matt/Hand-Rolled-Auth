@@ -22,7 +22,7 @@ describe('POST routes', () => {
     //     password: 'password',
     //   });
   });
-  it.only('creates a new post', async () => {
+  it('create a new post', async () => {
     user = await UserService.create({
       username: 'test',
       password: 'password',
@@ -52,14 +52,14 @@ describe('POST routes', () => {
     });
   });
   test('gets all posts', async () => {
-    const post1 = await Post.create({
+    const post1 = await Post.insert({
       user: '1',
       photoUrl: 'https:placekeanu.com/200/150',
       caption: 'here he is',
       tags: ['tagA', 'tagB', 'tagC']
     });
 
-    const post2 = await Post.create({
+    const post2 = await Post.insert({
       user: '1',
       photoUrl: 'https:placekeanu.com/200/150',
       caption: 'boom boom!',
