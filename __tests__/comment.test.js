@@ -33,18 +33,12 @@ describe('Comment routes', () => {
       tags: ['tagA', 'tagB', 'tagC']
     });
   });
-  it('create a new comment', async () => {
+  it.only('create a new comment', async () => {
 
-    // const post2 = await Post.insert({
-    //   userId: user.id,
-    //   photoUrl: 'https:placekeanu.com/200/150',
-    //   caption: 'boom boom!',
-    //   tags: ['tagA', 'tagB', 'tagC']
-    // });
     const res = await agent
       .post('/api/v1/comments')
       .send({
-        userId: user.id,
+        id: '1',
         commentBy: user.id,
         post1: 1,
         comment: ''
@@ -52,9 +46,8 @@ describe('Comment routes', () => {
 
     expect(res.body).toEqual({
       id: '1',
-      userId: user.id,
       commentBy: user.id,
-      post: 1,
+      post: '1',
       comment: ''
     });
   });
