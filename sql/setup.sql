@@ -20,3 +20,7 @@ CREATE TABLE comments (
   post BIGINT REFERENCES posts(id) NOT NULL,
   comment TEXT NOT NULL
 );
+-- SELECT * posts(id)
+--   LEFT JOIN user ON posts.id = user.id
+--   INNER JOIN comments ON comments.user.id = posts.user_id
+-- WHERE post = id

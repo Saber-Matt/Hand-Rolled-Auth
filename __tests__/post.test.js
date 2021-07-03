@@ -63,4 +63,17 @@ describe('POST routes', () => {
 
     expect(res.body).toEqual([post1, post2]);
   });
+
+  it('gets posts by id', async () => {
+    const postById = await Post.insert({
+      id: 1,
+      userId: user.id,
+      postId: 1,
+      comment: ''
+    });
+    const res = await agent
+      .get('api/vi/post:id');
+
+    expect(res.body).toEqual(postById);
+  });
 });
