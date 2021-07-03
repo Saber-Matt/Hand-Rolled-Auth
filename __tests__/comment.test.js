@@ -33,7 +33,7 @@ describe('Comment routes', () => {
       tags: ['tagA', 'tagB', 'tagC']
     });
   });
-  it.only('create a new comment', async () => {
+  it('create a new comment', async () => {
 
     const res = await agent
       .post('/api/v1/comments')
@@ -50,5 +50,18 @@ describe('Comment routes', () => {
       post: '1',
       comment: ''
     });
+  });
+  it('deletes a comment', async () => {
+    const comment = await Comment.insert({
+      commentBy: user.id,
+      post1: 1,
+      comment: ''
+    });
+
+    const res = await agent
+      .delete(`/api/v1/comments/${comment.id}`)
+      .send(comment);
+
+    expect(res.body).toEqual(comment);
   });
 });

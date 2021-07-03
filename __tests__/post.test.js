@@ -43,7 +43,7 @@ describe('POST routes', () => {
       tags: ['tagA,', 'tagB'],
     });
   });
-  test('gets all posts', async () => {
+  it('gets all posts', async () => {
     const post1 = await Post.insert({
       userId: user.id,
       photoUrl: 'https:placekeanu.com/200/150',
