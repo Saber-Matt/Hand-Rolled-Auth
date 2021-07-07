@@ -66,13 +66,13 @@ describe('POST routes', () => {
 
   it('gets posts by id', async () => {
     const postById = await Post.insert({
-      id: 1,
       userId: user.id,
-      postId: 1,
-      comment: ''
+      photoUrl: 'https:placekeanu.com/200/150',
+      caption: 'boom boom!',
+      tags: ['tagA', 'tagB', 'tagC']
     });
     const res = await agent
-      .get('api/vi/post:id');
+      .get('/api/v1/posts/1');
 
     expect(res.body).toEqual(postById);
   });
